@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 import com.saulomendes.cursomc.services.DBService;
 import com.saulomendes.cursomc.services.EmailService;
 import com.saulomendes.cursomc.services.MockEmailService;
+import com.saulomendes.cursomc.services.SmtpEmailService;
 
 @Configuration
 @Profile("test")
@@ -24,8 +25,13 @@ public class TestConfig {
 		return true;
 	}
 	//Quando se faz um método com @Bean, o método vai ta disponível como componente do sistema
-	@Bean
+	/*@Bean
 	public EmailService emailService() {
 		return new MockEmailService();
+	}*/
+	
+	@Bean
+	public EmailService emailService() {
+		return new SmtpEmailService();
 	}
 }
